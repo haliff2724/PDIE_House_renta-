@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .topnav {
+            display: flex;
+            width: 100%;
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.742);
+            z-index: 1000;
+        }
+
+        .topnav .buttons {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .topnav .buttons a.button {
+            border-radius: 15px;
+            border: 2px solid #104487ea;
+            color: #104487ea;
+            background-color: #f9f9ff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 13px 22px 13px 24px;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease-in-out;
+            font-family: sans-serif;
+            margin: 10px 20px 10px 5px;         
+        }
+
+        .topnav .buttons a.button:hover {
+            background-color: #104487ea;
+            color: #f9f9ff;
+        }
+
+        .topnav a {
+            float: left;
+            color: #104487ea;
+            text-align: center;
+            padding: 26px 15px 0px 15px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            font-family:sans-serif;
+        }
+
+        .topnav a:hover {
+            background-color: #001861d7;
+            color: rgb(255, 255, 255);
+        }
+
+        .topnav a.active {
+            background-color: #ffffff;
+            color: white;
+        }
+        .topnav a.image-button {
+            padding: 0;
+            background-color: #ffffffd7;
+            padding-left: 70px;
+        }
+        .sidebar {
+            width: 240px;
+            background-color: #002b5b;
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: fixed;
+            top: 62px;
+            bottom: 0;
+        }
+
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 15px 25px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            background-color: transparent;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #004a87;
+            color: #fff;
+        }
+
+        .sidebar a.active {
+            background-color: #00509e;
+            color: #ffffff;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            margin: 35px 30px 30px 280px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: #002b5b;
+            font-weight: 600;
+        }
+
+        .header .user {
+            font-size: 16px;
+            color: #0066cc;
+            font-weight: 500;
+        }    
+  
+        .property-form {
+            background-color: #f2f2f2af;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.299);
+            margin-top: 30px; 
+        }
+        .property-form#add {
+            width: 50%;
+        }
+
+        .property-form h2 {
+            margin-bottom: 20px;
+            color: #002b5b;
+            font-weight: 600;
+        }
+
+        .property-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .property-form input  {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .property-form button ,a{
+            padding: 10px 40px ;
+            background-color: #104487ea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            
+        }
+
+        .property-form button,a:hover {
+            background-color: #002b5b;
+        }      
+       
+        .update{
+            display:block ;
+            text-align: center;
+            font-size: 12px;
+            background-color: #04529fe4;
+            padding: 8px 10px;
+            
+        }
+        .delete{
+            background-color: #870101e0;
+            display: block;
+            color:#ebebeb;
+            text-align: center;
+            font-size: 12px;
+            padding: 8px 10px;
+        }
+        .delete:hover, .update:hover{           
+            
+            margin-left: 10%;
+ 
+        }
+        .property-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        }
+
+        .property-table th, .property-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+            font-size: small;
+        }
+
+        .property-table th {
+            background-color: #00509e;
+            color: white;
+        }
+
+        .property-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .property-table tr:hover {
+            background-color: #eaeaea;  
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .step-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .step-links a {
+            font-size: 14px;
+            text-decoration: none;
+            color: #ffffff;
+            padding: 8px 12px;
+            margin: 0 5px;
+            border: 1px solid #00509e;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .step-links a:hover {
+            background-color: #023c76;
+            color: white;
+        }
+
+        .current {
+            margin: 0 10px;
+            font-weight: bold;
+            color: #00509e;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <a href="/index/" class="image-button">
+            <img src="/static/baru.png" alt="Clickable Button" height="62">
+        </a>     
+        
+        <div class="buttons"> 
+            <a href="/index/" class="button">LOGOUT</a>
+        </div>   
+    </div>
+    
+    <div class="sidebar">
+        <nav>
+            <a href="/index/landlog/landDash/" >Dashboard</a>
+            <a href="/index/landlog/landProp/">Properties</a>
+            <a href="/index/landlog/landTenant/" class="active">Tenant</a>
+            <a href="/index/landlog/landReport/">Reports</a>
+        </nav>
+        <footer>
+            <p>&copy; 2024 Dashboard Inc.</p>
+        </footer>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Landlord Portal</h1>
+            <div class="user">Hello, User!</div>
+        </div>
+
+        <div class="property-form">
+        <h2>Pending Applications</h2>
+        <table class="property-table">
+            <thead>
+                <tr>
+                    <th>Applicant Name</th>
+                    <th>Applicant ID</th>
+                    <th>Property Requested</th>
+                    <th> Contact</th>
+                    <th>Address</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for rental in page_obj %}
+                    <td>{{ rental.studID.studName }}</td> 
+                    <td>{{ rental.studID.studID }}</td>
+                    <td>{{ rental.propID_id }}</td>  
+                    <td>{{ rental.studID.studNo }}</td>  
+                    <td>{{ rental.studID.studAddress }}</td>
+                    <td><a href="updatetrip/{{t.tripid}}/" class="update">Approve</a></td>
+                            <td><a href="deletetrip/{{t.tripid}}/" class="delete">Reject</a></td>
+                </tr>
+            
+                {% empty %}
+                <tr>
+                    <td colspan="6">No rentals found.</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+        </table>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+            </div>
+        </div>
+
+        <div class="property-form">
+            <h2>Tenant List</h2>
+            <table class="property-table">
+                <tr>
+                    <th>Tenant Name</th>
+                    <th>Tenant ID</th>
+                    <th>Contact</th>
+                    <th>Guardian Contact</th>
+                    <th>Rent ID</th>
+                    <th>Rent Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rental in page_obj %}
+                <tr>
+                    <td>{{ rental.studID.studName }}</td>  
+                    <td>{{ rental.studID.studID }}</td> 
+                    <td>{{ rental.studID.studNo }}</td>  
+                    <td>{{ rental.studID.guardNo }}</td>  
+                    <td>{{ rental.propID_id }}</td>  
+                    <td>{{ rental.propID.propLoc }}</td>  
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No rentals found.</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+    
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+    
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    
+</body>
+</html>

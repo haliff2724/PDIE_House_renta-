@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column; 
+            font-family: Arial, Helvetica, sans-serif;
+            background: url('/static/blank.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        p{
+            padding-top: 7px;
+            color: #000000ea;
+            font-size: 13px;
+        }
+        
+        .topnav {
+            display: flex; 
+            width: 100%;
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.742);
+            z-index: 1000;
+        }
+
+        .topnav .buttons {
+            margin-left: auto;  
+            display: flex;  
+            align-items: center;  
+        }
+
+        .topnav .buttons a.button {
+            border-radius: 15px;
+            border: 2px solid #104487ea;
+            color: #104487ea;
+            background-color: #f9f9ff;
+            font-size: 11px;
+            font-weight: 600; 
+            padding: 13px 24px 13px 22px ;  
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease-in-out;
+            font-family: sans-serif;
+            margin: 10px 10px 10px 5px;         
+        }
+
+
+        .topnav .buttons a.button.noborder {
+            border: none; 
+            font-size: 12;
+        }
+
+        .topnav .buttons a.button:hover {
+            background-color: #022858;
+            color: #f9f9ff;
+        }
+
+        .topnav a {
+            float: left;
+            color: #134382;
+            text-align: center;
+            align-items: center;
+            padding: 26px 15px 0px 15px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            font-family:sans-serif;
+        }
+
+        .topnav a:hover {
+            background-color: #001861d7;
+            color: rgb(255, 255, 255);
+        }
+
+        .topnav a.active {
+            background-color: #ffffff;
+            color: white;
+        }
+
+        .topnav a.image-button {
+            padding: 0;
+            background-color: #ffffffd7;
+            padding-left: 70px;
+        }
+
+        .main-content {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);  
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 22px;
+            box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            width: 680px;
+            max-width: 100%;
+            min-height: 40px;
+        }
+
+        form {
+            border-radius: 16px;
+            padding: 40px;
+            padding-top: px;
+            width: 250px;
+            text-align: center;
+        }
+
+        p.message {
+            color: #ac2200; 
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: bold;
+            margin-bottom: 40px;
+            margin-top: -40px;
+            color: #000000;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 12px;
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #151515d7;
+            padding-left: 2px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 1px 0px;
+            border: 1px solid #656d7681;
+            font-size: 14px;
+            font-family: 'Times New Roman', Times, serif;
+            border-radius: 9px;
+            box-sizing: border-box;
+            background-color: #f1f1f1a1;
+        }
+
+        button {
+            border-radius: 15px;
+            border: 0px;
+            background-color: #104487ea;
+            color: #f9f9ff;
+            font-size: 12px;
+            width: 250px;
+            font-weight: 600; 
+            padding: 10px 24px;
+            letter-spacing: 2px;
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+            font-family: sans-serif;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #002a62ea;
+        }
+
+        a.link {
+            display: inline-block;
+            text-decoration: underline;
+            padding-top: 7px;
+            color: #104487ea;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .right-panel {
+            flex: 1;
+            border-radius: 0px 19px 19px 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            color: #ffffff;
+            height: 435px;
+            background: url('/static/FINAL.png') no-repeat right center;
+            background-size: cover;  
+            background-color:#1848a1ee;
+        }
+        .divider {
+        width: 2px; /* Set the width of the divider */
+        background-color: #104487ea; /* Color of the divider */
+        height: 30px; /* Set the height of the divider */
+        margin: 0 10px; /* Add some margin to separate from buttons */
+    }
+    </style>
+</head>
+<body>
+    <body>
+        <div class="topnav">
+            <a href="/index/" class="image-button">
+                <img src="/static/baru.png" alt="Clickable Button" height="62">
+            </a>        
+            <a href="studDash/">How it works</a>
+            <a href="studlog/">About Us</a>            
+            <div class="buttons"> 
+                <a href="/index/studlog/" class="button">STUDENT</a>
+                <div class="divider"></div>
+                <a href="/index/landlog/" class="button noborder">LANDLORD</a>
+            </div>    
+        </div>
+    
+        <div class="main-content">
+            <div class="container" id="container">
+                <div class="form-container log-in-container">  
+                                      
+                    <form method="post" action="{% url 'houserental:studlog' %}"> <!-- app name : url name -->
+                        {% csrf_token %}
+                        <img src="/static/ha.png" alt="logo" height="80">
+                        <label>Hello,</label>
+                        <input type="text" name="studID" placeholder="Student ID" required minlength="12" maxlength="12"><br>
+                        <label></label>
+                        <input type="password" placeholder="Password" name="studPass" required><br>
+                        {% if message %}
+                        <p class="message">{{ message }}</p>
+                        {% endif %}
+    
+                        <button type="submit">Sign In</button><br>
+                        <p>Don't have an account? <a href="/index/studRegister/" class="link">Register</a></p>
+                        <a href="/index/adminlog/" class="link" >Admin</a>
+                        
+                    </form>
+                </div>
+                <div class="right-panel">
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+    
+</body>
+</html>

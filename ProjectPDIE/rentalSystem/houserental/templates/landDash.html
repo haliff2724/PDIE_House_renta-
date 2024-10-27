@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landlord Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .topnav {
+            display: flex;
+            width: 100%;
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.742);
+            z-index: 1000;
+        }
+
+        .topnav .buttons {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .topnav .buttons a.button {
+            border-radius: 15px;
+            border: 2px solid #104487ea;
+            color: #104487ea;
+            background-color: #f9f9ff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 13px 22px 13px 24px;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease-in-out;
+            font-family: sans-serif;
+            margin: 10px 20px 10px 5px;         
+        }
+
+        .topnav .buttons a.button:hover {
+            background-color: #104487ea;
+            color: #f9f9ff;
+        }
+
+        .topnav a {
+            float: left;
+            color: #104487ea;
+            text-align: center;
+            padding: 26px 15px 0px 15px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            font-family:sans-serif;
+        }
+
+        .topnav a:hover {
+            background-color: #001861d7;
+            color: rgb(255, 255, 255);
+        }
+
+        .topnav a.active {
+            background-color: #ffffff;
+            color: white;
+        }
+        .topnav a.image-button {
+            padding: 0;
+            background-color: #ffffffd7;
+            padding-left: 70px;
+        }
+
+        .sidebar {
+            width: 240px;
+            background-color: #002b5b;
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: fixed;
+            top: 62px;
+            bottom: 0;
+        }
+
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 15px 25px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            background-color: transparent;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #004a87;
+            color: #fff;
+        }
+
+        .sidebar a.active {
+            background-color: #00509e;
+            color: #ffffff;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            margin: 35px 30px 30px 280px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .property-form {
+            background-color: #f2f2f2af;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.299);
+            margin-top: 30px; /* Add margin for spacing */
+        }
+
+        .property-form h2 {
+            margin-bottom: 20px;
+            color: #002b5b;
+            font-weight: 600;
+        }
+        .header h1 {
+            font-size: 28px;
+            color: #002b5b;
+            font-weight: 600;
+        }
+
+        .property-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .property-table th, .property-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .property-table th {
+            background-color: #00509e;
+            color: white;
+        }
+
+        .property-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .property-table tr:hover {
+            background-color: #eaeaea; 
+        }
+
+        .property-forms {
+        display: flex;  
+        justify-content: space-between;  
+        margin-top: 30px; 
+    }
+
+    .property-form {
+        flex: 1; 
+        margin: 0 15px;  
+    }
+
+    .property-form:last-child {
+        margin-right: 0;  
+    }
+
+     
+    .property-form {
+        max-width: 48%;  
+    }
+
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <a href="/index/" class="image-button">
+            <img src="/static/baru.png" alt="Clickable Button" height="62">
+        </a>     
+        <div class="buttons"> 
+            <a href="/index/" class="button">LOGOUT</a>
+        </div>   
+    </div>
+
+    <div class="sidebar">
+        <nav>
+            <a href="/index/landlog/landDash/" class="active">Dashboard</a>
+            <a href="/index/landlog/landProp/">Properties</a>
+            <a href="/index/landlog/landTenant/">Tenant</a>            
+            <a href="/index/landlog/landReport/">Reports</a>
+        </nav>
+        <footer>
+            <p>&copy; 2024 Dashboard Inc.</p>
+        </footer>
+    </div>
+
+    <div class="main-content">                  
+        <div class="header">
+            <h1>Landlord Portal</h1>
+            <span class="user">Hello, User!</span>
+        </div>
+          
+        
+        <div class="property-forms">
+             
+            <div class="property-form">
+                <h2>Tenant Gender Distribution</h2>
+                <table class="property-table">
+                    <thead>
+                        <tr>
+                            <th>Gender</th>
+                            <th>Count</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Male</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Female</td>
+                            <td>1</td>
+                        </tr> 
+                        <th>Total Tenant</th>  
+                        <th>3</th>                 
+                    </tbody>
+                </table>
+            </div>
+    
+            <div class="property-form">
+                <table class="property-table">
+                    <h2>Occupancy Rate</h2>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Count</th>                      
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total Properties</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Rented Properties</td>
+                            <td>3</td>
+                        </tr>      
+                        <th>Occupancy Rate</th>   
+                        <th>70%</th>           
+                    </tbody>
+                </table>
+            </div>
+        </div> 
+    </div>
+    
+    </div>
+</body>
+</html>

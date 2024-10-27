@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentNest - Sign Up</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, Helvetica, sans-serif;
+            background: url('/static/blank.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        p{
+            color: #000000ea;
+            font-size: 13px;
+            margin-left: 44px;
+            margin-top: 15px;
+        }
+        
+        .topnav {
+            display: flex;  
+            width: 100%;
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.742);
+            z-index: 1000;
+        }
+
+        .topnav .buttons {
+            margin-left: auto;  
+            display: flex;  
+            align-items: center;  
+        }
+
+        .topnav .buttons a.button {
+            border-radius: 15px;
+            border: 2px solid #104487ea;
+            color: #104487ea;
+            background-color: #f9f9ff;
+            font-size: 11px;
+            font-weight: 600; 
+            padding: 13px 24px 13px 22px ;  
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease-in-out;
+            font-family: sans-serif;
+            margin: 10px 10px 10px 5px;         
+        }
+
+
+        .topnav .buttons a.button.noborder {
+            border: none; 
+            font-size: 12;
+        }
+
+        .topnav .buttons a.button:hover {
+            background-color: #022858;
+            color: #f9f9ff;
+        }
+
+        .topnav a {
+            float: left;
+            color: #134382;
+            text-align: center;
+            align-items: center;
+            padding: 26px 15px 0px 15px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            font-family:sans-serif;
+        }
+
+        .topnav a:hover {
+            background-color: #001861d7;
+            color: rgb(255, 255, 255);
+        }
+
+        .topnav a.active {
+            background-color: #ffffff;
+            color: white;
+        }
+
+        .topnav a.image-button {
+            padding: 0;
+            background-color: #ffffffd7;
+            padding-left: 70px;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            width: 100%;  
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 16px;
+            width: 40%;   
+            max-width: 1200px;
+            padding: 30px;
+            box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            margin: 20px;
+            height:  80%;
+        }
+        .form-container  {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            gap: 20px; 
+        }
+        .form-column {
+            flex: 1;
+            
+        }
+        form {
+            width: 100%;
+        }
+        h1 {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 35px;
+            padding-left: 10px;
+            color: #070575;
+        }
+        label {
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 12px;
+            display: block;
+            margin-bottom: 5px;
+            color: #434343d7;
+            text-align: left;
+        }
+        input, textarea {            
+            padding:8px 100px 10px 10px;
+            border: 1px solid #656d7681;            
+            border-radius: 9px;
+            background-color: #f1f1f1a1;
+            font-size: 14px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        textarea {
+            height: 55px; 
+            width: 175px 
+        }
+        select{
+            padding: 5px 150px 5px 5px;
+            border: 1px solid #656d7681;            
+            border-radius: 9px;
+            background-color: #f1f1f1a1;
+            font-size: 14px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        button {
+            border-radius: 15px;
+            border: none;
+            background-color: #104487ea;
+            color: #f9f9ff;
+            font-size: 12px;
+            width: 275px;
+            font-weight: 600;
+            padding: 10px 24px;
+            letter-spacing: 2px;
+            cursor: pointer;
+        
+            margin: 16px 0px -20px 5px;
+            transition: background-color 0.3s ease-in-out;
+            
+        }
+        button:hover {
+            background-color: #002a62ea;
+        }
+        a.link {
+            text-decoration: underline;
+            color: #104487ea;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .form-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .divider {
+        width: 2px; 
+        background-color: #104487ea; 
+        height: 30px; 
+        margin: 0 10px; 
+        }
+        p.subtitle{
+            margin: -30px 0px 30px 15px;
+            font-size: 13px;
+            
+            color: #070575;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <a href="/index/" class="image-button">
+            <img src="/static/baru.png" alt="Clickable Button" height="62">
+        </a>        
+        <a href="studDash/">How it works</a>
+        <a href="studlog/">About Us</a>            
+        <div class="buttons">
+            <a href="/index/studRegister/" class="button">STUDENT</a>
+            <div class="divider"></div>
+            <a href="/index/landRegister/" class="button noborder">LANDLORD</a>
+        </div>    
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <h1>Student Registration</h1>
+            <p class="subtitle">Register Now to Find Your Student Nest!</p>
+                     
+            <div class="form-container">
+                <!-- Left Column -->
+                <div class="form-column">
+                    <form method="post" action="{% url 'houserental:studRegister' %}">
+                        {% csrf_token %}
+                        <label for="studID">Student ID</label>
+                        <input type="text" name="studID" required minlength="12" maxlength="12"><br>
+
+                        <label for="studName">Full Name</label>
+                        <input type="text" name="studName" required><br>
+                        
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+
+                        <label for="studPass">Password</label>
+                        <input type="password" name="studPass" required ><br>
+
+                        <label for="confirmPass">Confirm Password</label>
+                        <input type="password" name="confirmPass" required><br>
+                </div>
+                 
+                <div class="form-column">
+                        <label for="studNo">Student Contact</label>
+                        <input type="text" name="studNo"><br>
+
+                        <label for="guardianNo">Guardian Contact</label>
+                        <input type="text" name="guardNo" placeholder="*Optional"><br>
+
+                        
+
+                        <label for="studAddress">Address</label>
+                        <textarea name="studAddress" required></textarea><br>
+                        <button type="submit">Register</button><br>
+                </form>   
+                
+                <p>Already have an account? <a href="/index/studlog/" class="link">Sign In</a></p>
+                </div>
+            </div>
+
+            <div class="form-footer">
+                
+            </div>
+                
+        </div>
+    </div>
+</body>
+
+</html>

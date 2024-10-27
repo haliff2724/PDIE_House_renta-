@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .topnav {
+            display: flex;
+            width: 100%;
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.742);
+            z-index: 1000;
+        }
+
+        .topnav .buttons {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .topnav .buttons a.button {
+            border-radius: 15px;
+            border: 2px solid #104487ea;
+            color: #104487ea;
+            background-color: #f9f9ff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 13px 22px 13px 24px;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease-in-out;
+            font-family: sans-serif;
+            margin: 10px 20px 10px 5px;         
+        }
+
+        .topnav .buttons a.button:hover {
+            background-color: #104487ea;
+            color: #f9f9ff;
+        }
+
+        .topnav a {
+            float: left;
+            color: #104487ea;
+            text-align: center;
+            padding: 26px 15px 0px 15px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            font-family:sans-serif;
+        }
+
+        .topnav a:hover {
+            background-color: #001861d7;
+            color: rgb(255, 255, 255);
+        }
+
+        .topnav a.active {
+            background-color: #ffffff;
+            color: white;
+        }
+        .topnav a.image-button {
+            padding: 0;
+            background-color: #ffffffd7;
+            padding-left: 70px;
+        }
+        .sidebar {
+            width: 240px;
+            background-color: #002b5b;
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: fixed;
+            top: 62px;
+            bottom: 0;
+        }
+
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 15px 25px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            background-color: transparent;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #004a87;
+            color: #fff;
+        }
+
+        .sidebar a.active {
+            background-color: #00509e;
+            color: #ffffff;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            margin: 35px 30px 30px 280px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: #002b5b;
+            font-weight: 600;
+        }
+
+        .edit-form {
+            background-color: #f2f2f2af;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.299);
+            margin-top: 30px;
+        }
+
+        .edit-form label {
+            font-size: 14px;
+            color: #002b5b;
+            font-weight: 500;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .edit-form input, .edit-form select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .save-button {
+            padding: 10px 40px;
+            background-color: #104487ea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .save-button:hover {
+            background-color: #002b5b;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <a href="/index/" class="image-button">
+            <img src="/static/baru.png" alt="Clickable Button" height="62">
+        </a>     
+        
+        <div class="buttons"> 
+            <a href="/index/" class="button">LOGOUT</a>
+        </div>   
+    </div>
+    
+    <div class="sidebar">
+        <nav>
+            <a href="/index/landlog/landDash/">Dashboard</a>
+            <a href="/index/landlog/landProp/" class="active">Properties</a>
+            <a href="/index/landlog/landTenant/">Tenant</a>            
+            <a href="/index/landlog/landReport/">Reports</a>
+        </nav>
+        <footer>
+            <p>&copy; 2024 Dashboard Inc.</p>
+        </footer>
+    </div>
+
+    <div class="main-content">                  
+        <div class="header">
+            <h1>Update Property</h1>
+        </div>
+
+        <div class="edit-form">
+            <label for="full-name">Property ID:</label>
+            <input type="text" id="full-name" name="full-name" placeholder="Enter property ID" required>
+
+            <label for="full-name">Property Name:</label>
+            <input type="text" id="full-name" name="full-name" placeholder="Enter property name" required>
+
+            <label for="propLoc">Location</label>
+                <input type="text" id="propLoc" name="propLoc" required>
+
+            <label for="propSize">Property Size</label>
+                <select name="propSize" id="propSize">
+                    <option value="">--Select Property Size--</option>
+                    <option value="2 Bedroom">2 Bedroom</option>
+                    <option value="3 Bedroom">3 Bedroom</option>
+                    <option value="4 Bedroom">4 Bedroom</option>
+                    <option value="5 Bedroom">5 Bedroom</option>
+                    <option value="4 Bedroom">6 Bedroom</option>
+                </select>
+
+            <label for="propPrice">Property Rate</label>
+                <input type="number" id="propPrice" name="propPrice" required>
+
+    
+            <button class="save-button" type="submit">Save Changes</button>
+        </div>
+    </div>
+</body>
+</html>
